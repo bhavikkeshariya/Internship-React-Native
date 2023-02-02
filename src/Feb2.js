@@ -3,6 +3,8 @@ import {
   ActivityIndicator,
   Alert,
   Button,
+  Image,
+  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -11,40 +13,69 @@ import {
 const Feb2 = () => {
   const [setLoading, setsetLoading] = useState(false);
   return (
-    <View style={styles.view}>
-      <Text style={styles.text}>Welcome to Creole Studios</Text>
-      <ActivityIndicator style={styles.ai} animating={setLoading} />
-      <Button
-        title="Press Me"
-        onPress={() => {
-          setsetLoading(!setLoading),
-            Alert.alert('You want to stop Activity Indicator');
-        }}
-      />
-    </View>
+    <SafeAreaView style={styles.safeView}>
+      <View style={styles.view1}>
+        <Text style={styles.text}>Welcome to</Text>
+        <Image
+          style={styles.image}
+          source={require('/Users/apple/Desktop/Bhavik/Week_2/AwesomeProject/img/cs-logo.png')}
+        />
+      </View>
+      <View style={styles.view2}>
+        {/* <ImageBackground
+          source={require('/Users/apple/Desktop/Bhavik/Week_2/AwesomeProject/img/pexels-photo-799443.jpeg')}
+          style={styles.bgimage}
+        /> */}
+        <ActivityIndicator size="large" color="white" animating={setLoading} />
+        <Button
+          title="Press me"
+          onPress={() => {
+            setsetLoading(!setLoading),
+              Alert.alert('You want to stop Activity Indicator');
+          }}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  view: {
+  safeView: {
     flex: 1,
     backgroundColor: 'black',
-    justifyContent: 'center',
     flexDirection: 'column',
-    paddingLeft: 70,
-    paddingRight: 70,
   },
-  ai: {
+  // bgimage: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   resizeMode: 'cover',
+  // },
+  view1: {
     justifyContent: 'center',
-    paddingBottom: 50,
-    size: 'large',
-    color: 'white',
+    backgroundColor: 'white',
+    padding: 10,
+    paddingBottom: 30,
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
   },
   text: {
-    color: 'white',
-    paddingBottom: 80,
+    textAlign: 'center',
     fontSize: 25,
     fontWeight: 'bold',
+    color: 'black',
+    margin: 20,
+  },
+  image: {
+    height: 50,
+    width: 95,
+  },
+  view2: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
   },
 });
+
 export default Feb2;
