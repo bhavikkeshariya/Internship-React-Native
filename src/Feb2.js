@@ -4,6 +4,7 @@ import {
   Alert,
   Button,
   Image,
+  ImageBackground,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -22,18 +23,22 @@ const Feb2 = () => {
         />
       </View>
       <View style={styles.view2}>
-        {/* <ImageBackground
+        <ImageBackground
           source={require('/Users/apple/Desktop/Bhavik/Week_2/AwesomeProject/img/pexels-photo-799443.jpeg')}
-          style={styles.bgimage}
-        /> */}
-        <ActivityIndicator size="large" color="white" animating={setLoading} />
-        <Button
-          title="Press me"
-          onPress={() => {
-            setsetLoading(!setLoading),
-              Alert.alert('You want to stop Activity Indicator');
-          }}
-        />
+          style={styles.bgimage}>
+          <ActivityIndicator
+            size="large"
+            color="white"
+            animating={setLoading}
+          />
+          <Button
+            title="Press me"
+            onPress={() => {
+              setsetLoading(!setLoading),
+                Alert.alert('You want to stop Activity Indicator');
+            }}
+          />
+        </ImageBackground>
       </View>
     </SafeAreaView>
   );

@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {Alert, Button, FlatList, Text, View} from 'react-native';
+import {
+  Alert,
+  Button,
+  FlatList,
+  KeyboardAvoidingView,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 const Feb3 = () => {
   const [dButton, setdButton] = useState(true);
@@ -64,6 +72,17 @@ const Feb3 = () => {
             );
           }}
         />
+      </View>
+      <View accessible={true}>
+        {/* <TouchableOpacity>
+          <Image
+            source={require('/Users/apple/Desktop/Bhavik/Week_2/AwesomeProject/img/pexels-photo-799443.jpeg')}
+          />
+        </TouchableOpacity> */}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <TextInput placeholder="Username" />
+        </KeyboardAvoidingView>
       </View>
     </View>
   );
