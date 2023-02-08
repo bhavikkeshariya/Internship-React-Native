@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import Colors from '../Assets/colors';
+import Colors from '../Assets/Colors';
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   mainView: {
     backgroundColor: Colors.WHITE,
     flexDirection: 'column',
@@ -110,6 +110,56 @@ const Styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
   },
+  option0: {
+    width: 165,
+    height: 165,
+    borderWidth: 5,
+    borderColor: Colors.BLACK,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    margin: 5,
+  },
+  view0: {
+    top: 35,
+    height: 30,
+    backgroundColor: Colors.BLACK,
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
+    alignItems: 'center',
+  },
+  text0: {
+    color: Colors.WHITE,
+    top: 5,
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  imgv0: {
+    width: 60,
+    height: 60,
+    alignSelf: 'flex-end',
+    backgroundColor: Colors.LT_BLACK,
+    borderBottomLeftRadius: 30,
+    borderTopRightRadius: 20,
+  },
+  viewLive: {
+    width: 30,
+    height: 15,
+    justifyContent: 'flex-start',
+  },
+  live3: {
+    width: 30,
+    height: 15,
+    top: 8,
+    left: 15,
+    fontWeight: 'bold',
+    color: Colors.RED,
+  },
+  viewMain: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 
-export default Styles;
+export default styles;
