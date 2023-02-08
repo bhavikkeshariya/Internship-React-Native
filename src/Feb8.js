@@ -1,10 +1,28 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Alert, Button, View} from 'react-native';
 
 const Feb8 = () => {
   return (
     <View>
-      <Text>Feb8</Text>
+      <Button
+        title="Press me"
+        onPress={() =>
+          Alert.alert(
+            'Are you sure?',
+            'Are you sure you want to leave creole studios?',
+            [
+              {
+                text: 'Yes',
+                onPress: () => console.log('Left'),
+              },
+              {
+                text: 'Definitely yes',
+                onPress: () => console.log('Horaah'),
+              },
+            ],
+          )
+        }
+      />
     </View>
   );
 };
