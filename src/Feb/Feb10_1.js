@@ -16,7 +16,7 @@ import {
   View,
 } from 'react-native';
 
-const Feb10 = () => {
+const Feb10_1 = () => {
   //Easing
   let fadeAnim = new Animated.Value(0);
 
@@ -223,4 +223,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Feb10;
+export default Feb10_1;
