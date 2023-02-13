@@ -57,6 +57,7 @@ const Feb3 = () => {
       <View>
         <FlatList
           data={DATA}
+          contentContainerStyle={{alignItems: 'center'}}
           renderItem={element => {
             return (
               <Text
@@ -64,7 +65,7 @@ const Feb3 = () => {
                   fontSize: 25,
                   fontWeight: 'bold',
                   color: 'blue',
-                  alignSelf: 'center',
+                  // alignSelf: 'center',
                 }}>
                 {element.item.name}
               </Text>
