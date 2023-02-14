@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Button, View} from 'react-native';
 
-const Feb13_2 = ({route}) => {
+const Feb13_2 = ({route, navigation}) => {
   //   const {myName} = route.params;
   return (
     <View
@@ -11,9 +11,11 @@ const Feb13_2 = ({route}) => {
         flex: 1,
         backgroundColor: '#5a97fa',
       }}>
-      <Text style={{fontSize: 25, fontWeight: 'bold', color: 'black'}}>
-        Home
-      </Text>
+      <Button
+        title="Go to Drawer Navigator"
+        onPress={() => navigation.navigate('Draw')}
+        color="black"
+      />
     </View>
   );
 };

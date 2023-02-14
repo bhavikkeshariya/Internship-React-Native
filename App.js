@@ -1,6 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Feb13_1 from './src/Feb/Feb13_1';
 import Feb13_2 from './src/Feb/Feb13_2';
@@ -8,6 +10,7 @@ import Feb13_3 from './src/Feb/Feb13_3';
 import Feb13_4 from './src/Feb/Feb13_4';
 import Feb13_5 from './src/Feb/Feb13_5';
 import Feb13_6 from './src/Feb/Feb13_6';
+import Feb14_1 from './src/Feb/Feb14_1';
 
 const Home1 = () => {
   const Tab = createBottomTabNavigator();
@@ -72,31 +75,38 @@ const App = () => {
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home2">
-        <Stack.Screen
-          name="Home2"
-          component={Feb13_1}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Home1"
-          component={Home1}
-          options={({route}) => ({
-            title: 'Hello ' + route.params.myName,
-            headerStyle: {
-              backgroundColor: 'black',
-            },
-            headerTitleStyle: {
-              color: 'white',
-              fontWeight: 'bold',
-            },
-            headerTitleAlign: 'center',
-            headerTintColor: 'white',
-          })}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home2">
+          <Stack.Screen
+            name="Home2"
+            component={Feb13_1}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Home1"
+            component={Home1}
+            options={({route}) => ({
+              title: 'Hello ' + route.params.myName,
+              headerStyle: {
+                backgroundColor: 'black',
+              },
+              headerTitleStyle: {
+                color: 'white',
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: 'white',
+            })}
+          />
+          <Stack.Screen
+            name="Draw"
+            component={Feb14_1}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 export default App;
