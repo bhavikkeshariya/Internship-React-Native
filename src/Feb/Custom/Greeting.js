@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Text, View} from 'react-native';
 
 const Greeting = props => {
+  console.log('Rendered');
   return (
     <View>
       <Text
@@ -16,4 +17,4 @@ const Greeting = props => {
   );
 };
 
-export default Greeting;
+export default memo(Greeting);
