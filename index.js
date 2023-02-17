@@ -4,6 +4,6 @@
 
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import Feb16_4 from './src/Feb/Feb16/useRef,useLayoutEffect';
+import Feb17_3 from './src/Feb/Feb17/openGallery';
 
-AppRegistry.registerComponent(appName, () => Feb16_4);
+AppRegistry.registerComponent(appName, () => Feb17_3);
