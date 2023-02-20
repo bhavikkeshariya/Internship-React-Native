@@ -4,6 +4,6 @@
 
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import Feb17_3 from './src/Feb/Feb17/openGallery';
+import apply from './src/Feb/Feb20/apply';
 
-AppRegistry.registerComponent(appName, () => Feb17_3);
+AppRegistry.registerComponent(appName, () => apply);
