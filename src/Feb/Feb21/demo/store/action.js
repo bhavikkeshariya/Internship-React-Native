@@ -1,5 +1,4 @@
 export const login = (userName, userPassword) => {
-  console.log(userName, userPassword);
   return {
     type: 'USER_LOGIN',
     payload: {
@@ -8,9 +7,7 @@ export const login = (userName, userPassword) => {
     },
   };
 };
-console.log();
 export const logout = (userName, userPassword) => {
-  console.log(userName, userPassword);
   return {
     type: 'USER_LOGOUT',
     payload: {

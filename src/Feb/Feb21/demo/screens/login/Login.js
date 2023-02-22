@@ -1,4 +1,5 @@
-import React, {useRef, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {useState} from 'react';
 import {
   Image,
   Text,
@@ -9,12 +10,9 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../store/action';
-
 import styles from './style';
 
 const Login = ({navigation}) => {
-  const todoInput = useRef();
-
   const [show, setshow] = useState(true);
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
@@ -23,13 +21,20 @@ const Login = ({navigation}) => {
 
   const newName = useSelector(store => store);
 
-  const submit = () => {
-    if (userName == '' || userPassword == '') {
-      ToastAndroid.show('Invalid Username or Password', ToastAndroid.SHORT);
-    } else {
+  const submit = async () => {
+    if (userName == 'Bhavik' || userPassword == '123456') {
       dispatch(login(userName, userPassword));
       navigation.navigate('Screen2');
       setUserName(''), setUserPassword('');
+
+      try {
+        await AsyncStorage.setItem('Name', userName);
+        await AsyncStorage.setItem('Password', userPassword);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      ToastAndroid.show('Invalid Username or Password', ToastAndroid.SHORT);
     }
   };
 
@@ -38,7 +43,6 @@ const Login = ({navigation}) => {
       <Text style={styles.mainText}>REGISTER</Text>
       <Text style={styles.inputTextHead}>Name</Text>
       <TextInput
-        ref={todoInput}
         style={styles.inputText}
         value={userName}
         placeholder="Username"

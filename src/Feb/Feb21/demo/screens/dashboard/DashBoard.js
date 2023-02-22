@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch} from 'react-redux';
@@ -6,9 +7,15 @@ import styles from './style';
 
 const DashBoard = ({navigation}) => {
   const dispatch = useDispatch();
-  const submit = () => {
+  const submit = async () => {
     navigation.navigate('Screen1');
     dispatch(logout('', ''));
+    try {
+      await AsyncStorage.setItem('Name', '');
+      await AsyncStorage.setItem('Password', '');
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <View style={styles.mainView}>
