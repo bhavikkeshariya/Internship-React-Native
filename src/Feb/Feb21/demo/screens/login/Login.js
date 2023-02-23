@@ -67,7 +67,7 @@ const Login = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity onPress={submit}>
+      <TouchableOpacity style={{alignSelf: 'center'}} onPress={submit}>
         <Text style={styles.button}>Submit</Text>
       </TouchableOpacity>
     </View>

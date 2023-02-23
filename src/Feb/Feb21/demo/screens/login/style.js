@@ -26,24 +26,21 @@ const styles = StyleSheet.create({
   },
   viewMid: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: 'black',
     marginVertical: 10,
   },
   textIn: {
-    alignSelf: 'flex-start',
-    width: '80%',
+    paddingHorizontal: 10,
+    flex: 1,
   },
   touch: {
     alignSelf: 'center',
   },
   img: {
-    alignSelf: 'flex-end',
     width: 25,
     height: 30,
-    margin: 10,
-    right: 15,
+    marginHorizontal: 10,
   },
   button: {
     fontSize: 20,
