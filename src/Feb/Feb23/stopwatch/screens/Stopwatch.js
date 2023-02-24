@@ -7,7 +7,7 @@ import styles from './style';
 const Stopwatch = () => {
   const dispatch = useDispatch();
   const Time = useSelector(store => store.Data.watch);
-  //   const Going = useSelector(store => store.Data.timing);
+  const Going = useSelector(store => store.Data.timing);
   const [disable, setDisable] = useState(false);
 
   const Start = () => {
@@ -17,7 +17,9 @@ const Stopwatch = () => {
     }, 1000);
   };
 
-  const Stop = () => dispatch(stop());
+  const Stop = () => {
+    setDisable(false), dispatch(stop());
+  };
   const Reset = () => dispatch(reset());
   return (
     <View style={styles.mainView}>

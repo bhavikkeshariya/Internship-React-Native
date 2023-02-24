@@ -2,18 +2,15 @@ import React from 'react';
 import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
-import {loadQuote} from '../Store/Action';
+import {loadQ} from '../Store/Action';
 import styles from './Style';
 
-const Quotes = () => {
+const SitcomQuotes = () => {
   const dispatch = useDispatch();
-  const getQuote = useSelector(store => store.quote);
-  const isLoading = useSelector(store => store.isLoading);
-  const getCharacter = useSelector(store => store.character);
-  const getAnime = useSelector(store => store.anime);
+  const getQuote = useSelector(store => store.two.quote);
+  const isLoading = useSelector(store => store.two.isLoading);
 
-  const Load = () => dispatch(loadQuote());
-
+  const Load = () => dispatch(loadQ());
   console.log('Loading........');
   return (
     <View style={styles.mainView}>
@@ -23,8 +20,6 @@ const Quotes = () => {
         ) : (
           <>
             <Text style={styles.quote}>{getQuote}</Text>
-            <Text style={styles.character}> ~ {getCharacter}</Text>
-            <Text style={styles.anime}> - {getAnime}</Text>
           </>
         )}
       </ScrollView>
@@ -38,4 +33,4 @@ const Quotes = () => {
   );
 };
 
-export default Quotes;
+export default SitcomQuotes;

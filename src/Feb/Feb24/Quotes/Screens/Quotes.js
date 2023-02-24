@@ -5,14 +5,18 @@ import {useDispatch, useSelector} from 'react-redux';
 import {loadQuote} from '../Store/Action';
 import styles from './Style';
 
-const Quotes = () => {
+const Quotes = ({navigation}) => {
   const dispatch = useDispatch();
-  const getQuote = useSelector(store => store.quote);
-  const isLoading = useSelector(store => store.isLoading);
-  const getCharacter = useSelector(store => store.character);
-  const getAnime = useSelector(store => store.anime);
+  const getQuote = useSelector(store => store.one.quote);
+  const isLoading = useSelector(store => store.one.isLoading);
+  const getCharacter = useSelector(store => store.one.character);
+  const getAnime = useSelector(store => store.one.anime);
 
   const Load = () => dispatch(loadQuote());
+
+  const GoTo = () => {
+    navigation.navigate('Sitcom-Quotes');
+  };
 
   console.log('Loading........');
   return (
@@ -32,6 +36,11 @@ const Quotes = () => {
       <View style={styles.loadView}>
         <TouchableOpacity style={styles.buttonLoad} onPress={Load}>
           <Text style={styles.loadText}>Load Quote</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.loadView}>
+        <TouchableOpacity style={styles.buttonLoad} onPress={GoTo}>
+          <Text style={styles.loadText}>Go to Sitcom Quotes</Text>
         </TouchableOpacity>
       </View>
     </View>
