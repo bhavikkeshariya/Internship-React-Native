@@ -23,7 +23,7 @@ const RegisterData = ({navigation}) => {
       ToastAndroid.show('Enter a Data', ToastAndroid.SHORT);
     } else {
       dispatch(add({Name: name, Email: email, Password: password}));
-      navigation.navigate('Screen1');
+      navigation.navigate('Register Users');
     }
   };
   return (

@@ -11,11 +11,18 @@ import {useDispatch, useSelector} from 'react-redux';
 import {update} from '../../Store/Action';
 import styles from './style';
 
-const UpdateData = ({navigation}) => {
+const UpdateData = ({navigation, route}) => {
   const dispatch = useDispatch();
-  const oldName = useSelector(store => store.data.Name);
-  const oldEmail = useSelector(store => store.data.Email);
-  const oldPassword = useSelector(store => store.data.Password);
+
+  const oldData = useSelector(store => store.data);
+  const oldName = useSelector(store => store.data[route.params.index].Name);
+  const oldEmail = useSelector(store => store.data[route.params.index].Email);
+  const oldPassword = useSelector(
+    store => store.data[route.params.index].Password,
+  );
+  var index = route.params.index;
+
+  const [state, setState] = useState(oldData);
 
   const [name, setName] = useState(oldName);
   const [email, setEmail] = useState(oldEmail);
@@ -24,12 +31,21 @@ const UpdateData = ({navigation}) => {
   const goTo = () => {
     if (name == '' || email == '' || password == '') {
       ToastAndroid.show('Enter a Data', ToastAndroid.SHORT);
+    } else if (
+      oldName !== name ||
+      oldEmail !== email ||
+      oldPassword !== password
+    ) {
+      let data = JSON.parse(JSON.stringify(state));
+      data[index].Name = name;
+      data[index].Email = email;
+      data[index].Password = password;
+      dispatch(update(data));
+      navigation.navigate('Register Users');
     } else {
-      dispatch(update({Name: name, Email: email, Password: password}));
-      navigation.navigate('Screen1');
+      navigation.navigate('Register Users');
     }
   };
-
   return (
     <View style={styles.mainView}>
       <Text style={styles.head}>Name:</Text>

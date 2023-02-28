@@ -11,21 +11,51 @@ const Navigate = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Screen1">
+        <Stack.Navigator initialRouteName="Register Users">
           <Stack.Screen
-            name="Screen1"
+            name="Register Users"
             component={Dashboard}
-            options={{headerShown: false}}
+            options={() => ({
+              headerStyle: {
+                backgroundColor: '#C95B6C',
+              },
+              headerTitleStyle: {
+                color: 'black',
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: 'black',
+            })}
           />
           <Stack.Screen
-            name="Screen2"
+            name="Add User"
             component={RegisterData}
-            options={{headerShown: false}}
+            options={() => ({
+              headerStyle: {
+                backgroundColor: '#C95B6C',
+              },
+              headerTitleStyle: {
+                color: 'black',
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: 'black',
+            })}
           />
           <Stack.Screen
-            name="Screen3"
+            name="Update Data"
             component={UpdateData}
-            options={{headerShown: false}}
+            options={() => ({
+              headerStyle: {
+                backgroundColor: '#C95B6C',
+              },
+              headerTitleStyle: {
+                color: 'black',
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
+              headerTintColor: 'black',
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>

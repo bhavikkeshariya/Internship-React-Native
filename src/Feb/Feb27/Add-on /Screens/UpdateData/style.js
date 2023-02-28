@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   input: {
-    borderColor: 'pink',
+    borderColor: '#C95B6C',
     borderWidth: 3,
     marginHorizontal: 20,
     borderRadius: 15,
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   button: {
-    backgroundColor: 'pink',
+    backgroundColor: '#C95B6C',
     margin: 20,
     borderWidth: 3,
     borderRadius: 50,

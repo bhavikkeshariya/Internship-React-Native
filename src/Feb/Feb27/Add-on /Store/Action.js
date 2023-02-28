@@ -4,12 +4,7 @@ export const add = data => {
     payload: data,
   };
 };
-export const edit = data => {
-  return {
-    type: 'EDIT',
-    payload: data,
-  };
-};
+
 export const update = data => {
   return {
     type: 'UPDATE',

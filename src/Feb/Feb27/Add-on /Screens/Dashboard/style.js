@@ -3,17 +3,18 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     backgroundColor: 'black',
   },
   display: {
     margin: 20,
     borderWidth: 3,
-    borderColor: 'pink',
+    borderColor: '#C95B6C',
     backgroundColor: 'white',
     borderRadius: 15,
     padding: 15,
+    width: '95%',
+    alignSelf: 'center',
   },
   text: {
     fontSize: 20,
@@ -21,16 +22,17 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     alignSelf: 'flex-end',
+    position: 'absolute',
   },
   button: {
-    backgroundColor: 'pink',
-    margin: 20,
-    borderWidth: 3,
+    backgroundColor: '#C95B6C',
+    margin: 25,
+    borderWidth: 5,
     borderRadius: 50,
-    borderColor: 'white',
+    borderColor: 'pink',
   },
   add: {
-    fontSize: 55,
+    fontSize: 50,
     paddingHorizontal: 20,
     color: 'white',
   },

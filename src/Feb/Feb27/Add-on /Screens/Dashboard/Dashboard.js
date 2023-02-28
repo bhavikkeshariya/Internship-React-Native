@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteId, edit} from '../../Store/Action';
+import {deleteId} from '../../Store/Action';
 import styles from './style';
 
 const Dashboard = ({navigation}) => {
@@ -13,8 +13,7 @@ const Dashboard = ({navigation}) => {
     dispatch(deleteId(index));
   };
   const goToS3 = index => {
-    dispatch(edit(index));
-    navigation.navigate('Screen3');
+    navigation.navigate('Update Data', {index: `${index}`});
   };
 
   const Compo = ({item, index}) => {
@@ -31,7 +30,7 @@ const Dashboard = ({navigation}) => {
   };
 
   const goTo = () => {
-    navigation.navigate('Screen2');
+    navigation.navigate('Add User');
   };
   return (
     <View style={styles.mainView}>

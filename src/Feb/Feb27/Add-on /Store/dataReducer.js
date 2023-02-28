@@ -11,17 +11,12 @@ const dataReducer = (state = initialState, action) => {
         ...state,
         data: [...state.data, action.payload],
       };
-    case 'EDIT':
+
+    case 'UPDATE':
       console.log(action.payload);
       return {
         ...state,
-        data: state.data[action.payload],
-      };
-    case 'UPDATE':
-      console.log(action.payload.Email + '00000000000000');
-      return {
-        ...state,
-        data: state.data.map(),
+        data: action.payload,
       };
 
     case 'DELETE':
