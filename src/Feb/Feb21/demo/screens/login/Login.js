@@ -1,5 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, {useState} from 'react';
+import database from '@react-native-firebase/database';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useState} from 'react';
 import {
   Image,
   Text,
@@ -21,20 +22,28 @@ const Login = ({navigation}) => {
 
   const newName = useSelector(store => store);
 
-  const submit = async () => {
-    if (userName == 'Bhavik' || userPassword == '123456') {
+  const submit = () => {
+    if (userName == '' || userPassword == '') {
+      ToastAndroid.show('Invalid Username or Password', ToastAndroid.SHORT);
+    } else {
+      database()
+        .ref('/users')
+        .set({
+          userName: userName,
+          userPassword: userPassword,
+        })
+        .then(() => console.log('Data set.'));
+
       dispatch(login(userName, userPassword));
       navigation.navigate('Screen2');
       setUserName(''), setUserPassword('');
 
-      try {
-        await AsyncStorage.setItem('Name', userName);
-        await AsyncStorage.setItem('Password', userPassword);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      ToastAndroid.show('Invalid Username or Password', ToastAndroid.SHORT);
+      // try {
+      //   await AsyncStorage.setItem('Name', userName);
+      //   await AsyncStorage.setItem('Password', userPassword);
+      // } catch (err) {
+      //   console.log(err);
+      // }
     }
   };
 
