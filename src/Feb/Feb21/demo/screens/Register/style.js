@@ -51,12 +51,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     padding: 10,
   },
-  register: {
-    alignSelf: 'center',
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginVertical: 10,
-    color: 'black',
-  },
 });
 export default styles;

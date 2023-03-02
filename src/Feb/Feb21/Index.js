@@ -1,5 +1,5 @@
 import {Provider} from 'react-redux';
-import Navigate from './demo/navigation/navigate';
+import Navigate from './demo/navigation/LoginNavigate';
 import store from './demo/store/store';
 
 const Index = () => {

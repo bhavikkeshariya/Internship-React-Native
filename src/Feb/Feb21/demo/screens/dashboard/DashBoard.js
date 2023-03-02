@@ -19,7 +19,7 @@ const DashBoard = ({navigation}) => {
   };
   return (
     <View style={styles.mainView}>
-      <Text style={styles.mainText}>DashBoard</Text>
+      <Text style={styles.mainText}> DashBoard</Text>
       <TouchableOpacity style={styles.button} onPress={submit}>
         <Text style={styles.text}>Logout</Text>
       </TouchableOpacity>
