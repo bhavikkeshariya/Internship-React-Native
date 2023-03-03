@@ -1,5 +1,6 @@
 import database from '@react-native-firebase/database';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
+import bcrypt from 'bcryptjs';
 import {useState} from 'react';
 import {
   Image,
@@ -19,7 +20,7 @@ const Register = ({navigation}) => {
   const [userPassword, setUserPassword] = useState('');
 
   const dispatch = useDispatch();
-
+  const storePassword = bcrypt.hashSync(userPassword, 12);
   const newName = useSelector(store => store);
 
   const submit = () => {
@@ -30,15 +31,15 @@ const Register = ({navigation}) => {
       // console.log('Auto generated key: ', newReference.key);
 
       database()
-        .ref('/users/')
-        .push({
+        .ref('/user/' + userName)
+        .set({
           Username: userName,
-          Password: userPassword,
+          Password: storePassword,
         })
         .then(() => console.log('Data set.'));
 
       dispatch(login(userName, userPassword));
-      navigation.navigate('Screen2');
+      navigation.navigate('Profile', [`${userName}`, `${userPassword}`]);
       setUserName(''), setUserPassword('');
 
       // try {

@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     color: 'white',
     marginVertical: 10,
     alignSelf: 'center',
-    backgroundColor: 'black',
     padding: 10,
   },
   register: {

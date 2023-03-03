@@ -2,8 +2,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {Login, Register, SplashS} from '../screens';
-import DashboardNavigation from './DashboardNavigation';
+import {Login, Profile, Register, SplashS} from '../screens';
+import TabNavigation from './TabNavigation';
 
 const Navigate = () => {
   const Stack = createNativeStackNavigator();
@@ -18,7 +18,7 @@ const Navigate = () => {
           />
           <Stack.Screen
             name="Screen2"
-            component={DashboardNavigation}
+            component={TabNavigation}
             options={() => ({
               headerShown: false,
             })}
@@ -37,6 +37,7 @@ const Navigate = () => {
               headerShown: false,
             })}
           />
+          <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -16,6 +16,7 @@ const Login = ({navigation}) => {
   const [show, setshow] = useState(true);
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
+  const [disable, setDisable] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const Login = ({navigation}) => {
       ToastAndroid.show('Please enter details!', ToastAndroid.SHORT);
     } else {
       database()
-        .ref('/users/')
+        .ref('/user/')
         .once('value')
         .then(snapshot => {
           const data = Object.values(snapshot.val());
@@ -37,7 +38,7 @@ const Login = ({navigation}) => {
           });
           if (isUser.length > 0) {
             ToastAndroid.show('Login Successfully', ToastAndroid.SHORT);
-            navigation.navigate('Screen2');
+            navigation.navigate('Profile', [userName, userPassword]);
             setUserName(''), setUserPassword('');
           } else {
             ToastAndroid.show('Invalid credentials!', ToastAndroid.SHORT);
@@ -58,7 +59,7 @@ const Login = ({navigation}) => {
         value={userName}
         placeholder="Username"
         onChangeText={uName => {
-          setUserName(uName);
+          setUserName(uName), setDisable(true);
         }}
       />
       <Text style={styles.inputTextHead}>Password</Text>
@@ -68,9 +69,10 @@ const Login = ({navigation}) => {
           placeholder="*********"
           secureTextEntry={show}
           value={userPassword}
-          onChangeText={uPassword => setUserPassword(uPassword)}
+          onChangeText={uPassword => {
+            setUserPassword(uPassword), setDisable(false);
+          }}
         />
-
         <TouchableOpacity style={styles.touch} onPress={() => setshow(!show)}>
           <Image
             style={styles.img}
@@ -81,8 +83,19 @@ const Login = ({navigation}) => {
       <TouchableOpacity onPress={goTo}>
         <Text style={styles.register}>Register?</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={{alignSelf: 'center'}} onPress={submit}>
-        <Text style={styles.button}>Submit</Text>
+      <TouchableOpacity
+        style={{
+          alignSelf: 'center',
+        }}
+        onPress={submit}
+        disabled={disable ? true : false}>
+        <Text
+          style={[
+            styles.button,
+            {backgroundColor: disable ? 'gray' : 'black'},
+          ]}>
+          Submit
+        </Text>
       </TouchableOpacity>
     </View>
   );
