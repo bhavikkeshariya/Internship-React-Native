@@ -32,5 +32,21 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 10,
   },
+  head: {
+    fontWeight: 'bold',
+    color: 'black',
+    paddingHorizontal: 5,
+    marginVertical: 2,
+  },
+  login: {
+    alignSelf: 'center',
+    margin: 10,
+  },
+  loginText: {
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 20,
+    textDecorationLine: 'underline',
+  },
 });
 export default styles;

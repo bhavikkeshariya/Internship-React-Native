@@ -1,22 +1,22 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {Dashboard, Login, SplashS} from '../Screens';
+import {Dashboard, Login, OTP} from '../Screens';
 
 const Stack = createNativeStackNavigator();
 
 const Navigate = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
-        <Stack.Screen
-          name="Splash"
-          component={SplashS}
-          options={{headerShown: false}}
-        />
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OTP"
+          component={OTP}
           options={{headerShown: false}}
         />
         <Stack.Screen

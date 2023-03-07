@@ -9,11 +9,12 @@ import {Button, Text, View} from 'react-native';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import styles from './style';
 
-const Login = () => {
+const Login = ({navigation}) => {
   useEffect(() => {
     GoogleSignin.configure({
+      scopes: ['https://www.googleapis.com/auth/userinfo.email'],
       webClientId:
-        '105722745642-2fg264t56bt0icp4817fa393n08pe2qd.apps.googleusercontent.com',
+        '105722745642-h00r58fua1qnbm1dg1rgdbk4at6832ac.apps.googleusercontent.com',
       offlineAccess: true,
       forceCodeForRefreshToken: true,
       accountName: '',
@@ -34,7 +35,7 @@ const Login = () => {
         // play services not available or outdated
       } else {
         // some other error happened
-        console.log(error.code);
+        console.log(error);
       }
     }
   };
@@ -63,7 +64,11 @@ const Login = () => {
     );
 
     // Sign-in the user with the credential
-    return auth().signInWithCredential(facebookCredential);
+    return (
+      auth().signInWithCredential(facebookCredential),
+      console.log(facebookCredential),
+      navigation.navigate('Dashboard')
+    );
   };
 
   return (
