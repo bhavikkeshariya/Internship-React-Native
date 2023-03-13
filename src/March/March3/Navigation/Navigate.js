@@ -1,7 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {Dashboard, Login, OTP} from '../Screens';
+import {Dashboard, Login} from '../Screens';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,11 +12,6 @@ const Navigate = () => {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="OTP"
-          component={OTP}
           options={{headerShown: false}}
         />
         <Stack.Screen
