@@ -14,7 +14,7 @@ const Login = ({navigation}) => {
     GoogleSignin.configure({
       scopes: ['https://www.googleapis.com/auth/userinfo.email'],
       webClientId:
-        '105722745642-h00r58fua1qnbm1dg1rgdbk4at6832ac.apps.googleusercontent.com',
+        '105722745642-7ck5l9qksq8eovo5q5rapfqhe69qbav3.apps.googleusercontent.com',
       offlineAccess: true,
       forceCodeForRefreshToken: true,
       accountName: '',
