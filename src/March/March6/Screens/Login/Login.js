@@ -4,22 +4,17 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button, Text, View} from 'react-native';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import styles from './style';
 
 const Login = ({navigation}) => {
-  // useEffect(() => {
-  //   GoogleSignin.configure({
-  //     webClientId:
-  //       '105722745642-j0eqqs79cugnes3ih25k1spndvlkr10u.apps.googleusercontent.com',
-  //   });
-  // }, []);
-  GoogleSignin.configure({
-    webClientId:
-      '105722745642-a80ogbdoqbavn9nf877nrs0fkvqtu6ph.apps.googleusercontent.com',
-  });
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '',
+    });
+  }, []);
 
   const signIn = async () => {
     try {
