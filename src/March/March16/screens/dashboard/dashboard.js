@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import LottieView from 'lottie-react-native';
+import React, {useEffect, useState} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './style';
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
   const [data, setData] = useState('');
-  const getData = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
     fetch('http://www.krdagujarat.in/api/customer/user_list', {
       method: 'POST',
       headers: {
@@ -13,33 +15,59 @@ const Dashboard = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data.data), setData(data.data);
+        console.log(data.data), setData(data.data), setLoading(false);
+      });
+  }, []);
+
+  const goDetails = id => {
+    setLoading(true);
+    fetch(`http://www.krdagujarat.in/api/customer/user_details/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        navigation.navigate('Profile', {data: data}), setLoading(false);
       });
   };
 
   const Compo = ({item}) => {
     return (
-      <View style={styles.item}>
-        <Image
-          style={styles.img}
-          source={{
-            uri: `http://krdagujarat.in/uploads/user_thumb/${item.image}`,
-          }}
-        />
-        <Text style={styles.itemTxt}>
-          Name: {item.first_name + ' ' + item.last_name}
-        </Text>
-        <Text style={styles.itemTxt}>Category: {item.category}</Text>
-        <Text style={styles.itemTxt}>Email: {item.email}</Text>
+      <View>
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => {
+            goDetails(item.id);
+          }}>
+          <Image
+            style={styles.img}
+            source={{
+              uri: `http://krdagujarat.in/uploads/user_thumb/${item.image}`,
+            }}
+          />
+          <View style={styles.view}>
+            <Text style={styles.itemTxt}>
+              Name: {item.first_name + ' ' + item.last_name}
+            </Text>
+            <Text style={styles.itemTxt}>Category: {item.category}</Text>
+            <Text style={styles.itemTxt}>Email: {item.email}</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
   return (
     <View style={styles.mainView}>
-      <FlatList data={data} numColumns={2} renderItem={Compo} />
-      <TouchableOpacity style={styles.button} onPress={getData}>
-        <Text style={styles.buttonTxt}>GET DATA</Text>
-      </TouchableOpacity>
+      {loading ? (
+        <LottieView
+          source={require('../../../../Assets/Images/search.json')}
+          autoPlay
+        />
+      ) : (
+        <FlatList data={data} renderItem={Compo} />
+      )}
     </View>
   );
 };

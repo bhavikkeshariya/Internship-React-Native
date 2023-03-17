@@ -8,34 +8,25 @@ const styles = StyleSheet.create({
   item: {
     margin: 10,
     padding: 5,
-    borderRadius: 5,
+    borderRadius: 10,
     borderWidth: 2,
     borderColor: 'black',
-    width: '45%',
+    width: '95%',
+    flexDirection: 'row',
+    backgroundColor: 'white',
   },
   itemTxt: {
-    fontSize: 10,
+    fontSize: 14,
     paddingVertical: 5,
     color: 'black',
-    fontWeight: 'bold',
-  },
-  button: {
-    alignSelf: 'center',
-    margin: 15,
-    backgroundColor: 'black',
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonTxt: {
-    fontSize: 25,
-    color: 'white',
     fontWeight: 'bold',
   },
   img: {
     width: 50,
     height: 50,
     borderRadius: 45,
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
+    margin: 10,
   },
 });
 export default styles;

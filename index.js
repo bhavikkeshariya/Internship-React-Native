@@ -4,6 +4,6 @@
 
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import Index from './src/March/March16';
+import Dashboard from './src/March/March17/screens/dashboard/dashboard';
 
-AppRegistry.registerComponent(appName, () => Index);
+AppRegistry.registerComponent(appName, () => Dashboard);

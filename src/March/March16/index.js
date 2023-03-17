@@ -1,10 +1,10 @@
 import React from 'react';
-import {Dashboard} from './screens';
+import Navigation from './navigation/navigation';
 
 const Index = () => {
   return (
     <>
-      <Dashboard />
+      <Navigation />
     </>
   );
 };
