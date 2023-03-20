@@ -27,5 +27,11 @@ const styles = StyleSheet.create({
   textEmail: {
     color: '#777',
   },
+  footer: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
 });
 export default styles;
