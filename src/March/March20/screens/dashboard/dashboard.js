@@ -1,10 +1,14 @@
 import {useEffect, useState} from 'react';
 import {
+  ActionSheetIOS,
   ActivityIndicator,
   Alert,
+  BackHandler,
   FlatList,
   Image,
   Linking,
+  Platform,
+  SafeAreaView,
   Text,
   TextInput,
   ToastAndroid,
@@ -17,6 +21,7 @@ import {fetchUsers} from '../../redux/toolkit';
 import styles from './style';
 
 const Dashboard = () => {
+  Icon.loadFont();
   const [loading, setLoading] = useState(true);
   const user = useSelector(state => state.userSlice);
   const [search, setSearch] = useState('');
@@ -24,6 +29,22 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUsers());
+
+    const back = () => {
+      Alert.alert('Exit App?', 'Are you sure you want to exit app?', [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Yes',
+          onPress: () => BackHandler.exitApp(),
+        },
+      ]);
+      return true;
+    };
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', back);
+    return () => backHandler.remove();
   }, []);
 
   const getData = ({item}) => {
@@ -75,32 +96,50 @@ const Dashboard = () => {
   };
 
   const searchList = () => {
-    Alert.alert('FILTERS', 'Apply Filters', [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'Search by Genre',
-        onPress: () => {
-          setSearchType('genre'),
-            ToastAndroid.show('Search by Genre', ToastAndroid.SHORT);
+    if (Platform.OS == 'ios') {
+      ActionSheetIOS.showActionSheetWithOptions(
+        {
+          options: ['Cancel', 'Search by Title', 'Search by Genre'],
+          cancelButtonIndex: 0,
+          userInterfaceStyle: 'light',
         },
-      },
-      {
-        text: 'Search by Title',
-        onPress: () => {
-          setSearchType('title'),
-            ToastAndroid.show('Search by Title', ToastAndroid.SHORT);
+        buttonIndex => {
+          if (buttonIndex === 0) {
+          } else if (buttonIndex === 1) {
+            setSearchType('title');
+          } else if (buttonIndex === 2) {
+            setSearchType('genre');
+          }
         },
-      },
-    ]);
+      );
+    } else {
+      Alert.alert('FILTERS', 'Apply Filters', [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Search by Genre',
+          onPress: () => {
+            setSearchType('genre'),
+              ToastAndroid.show('Search by Genre', ToastAndroid.SHORT);
+          },
+        },
+        {
+          text: 'Search by Title',
+          onPress: () => {
+            setSearchType('title'),
+              ToastAndroid.show('Search by Title', ToastAndroid.SHORT);
+          },
+        },
+      ]);
+    }
   };
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <View style={styles.view}>
         <TextInput
-          style={styles.input}
+          style={Platform.OS == 'ios' ? styles.inputIOS : styles.input}
           placeholder="Search a game..."
           value={search}
           onChangeText={text => setSearch(text)}
@@ -116,7 +155,7 @@ const Dashboard = () => {
         renderItem={getData}
         ListFooterComponent={renderFooter}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

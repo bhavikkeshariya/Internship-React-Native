@@ -60,6 +60,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  inputIOS: {
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 30,
+    marginVertical: 3,
+    paddingHorizontal: 18,
+    flex: 1,
+    backgroundColor: 'white',
+    height: '80%',
+  },
   view: {
     flexDirection: 'row',
     margin: 10,
