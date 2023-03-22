@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {
+  SafeAreaView,
   Text,
   TextInput,
   ToastAndroid,
@@ -44,7 +45,7 @@ const Register = ({navigation}) => {
   };
 
   return (
-    <View style={styles.mainView}>
+    <SafeAreaView style={styles.mainView}>
       <Text style={styles.text}>Register with Email</Text>
       <View style={styles.inputView}>
         <Text style={styles.head}>Email</Text>
@@ -87,7 +88,7 @@ const Register = ({navigation}) => {
         onPress={() => navigation.navigate('Login')}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

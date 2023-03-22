@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import styles from './style';
 
 const Dashboard = ({navigation}) => {
@@ -11,12 +11,12 @@ const Dashboard = ({navigation}) => {
     navigation.navigate('Login');
   };
   return (
-    <View style={styles.mainView}>
+    <SafeAreaView style={styles.mainView}>
       <Text style={styles.mainText}> DashBoard</Text>
       <TouchableOpacity style={styles.button} onPress={submit}>
         <Text style={styles.text}>Logout</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

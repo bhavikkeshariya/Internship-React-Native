@@ -4,6 +4,6 @@
 
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import Index from './src/March/March20';
+import Signal from './src/March/March22/screens/signal/signal';
 
-AppRegistry.registerComponent(appName, () => Index);
+AppRegistry.registerComponent(appName, () => Signal);

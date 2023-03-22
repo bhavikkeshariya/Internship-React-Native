@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {
+  SafeAreaView,
   Text,
   TextInput,
   ToastAndroid,
@@ -58,7 +59,7 @@ const Login = ({navigation}) => {
     );
   }
   return (
-    <View style={styles.mainView}>
+    <SafeAreaView style={styles.mainView}>
       <Text style={styles.text}>Enter the OTP</Text>
       <View style={styles.inputView}>
         <TextInput
@@ -74,7 +75,7 @@ const Login = ({navigation}) => {
       <TouchableOpacity style={styles.button} onPress={() => goTo2()}>
         <Text style={styles.btnText}>Verify</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

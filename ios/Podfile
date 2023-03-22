@@ -28,6 +28,7 @@ pod 'FirebaseCore', :modular_headers => true
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'Firebase/Analytics'
 target 'AwesomeProject' do
   config = use_native_modules!
 
