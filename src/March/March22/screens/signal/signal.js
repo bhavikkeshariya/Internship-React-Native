@@ -1,48 +1,61 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, TextInput, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './style';
 
 const Signal = () => {
-  const [signalOne, setSignalOne] = useState(true);
-  const [signalTwo, setSignalTwo] = useState(false);
-  const [signalThree, setSignalThree] = useState(false);
-  const [signalFour, setSignalFour] = useState(false);
+  const signalOrder = ['signalOne', 'signalTwo', 'signalThree', 'signalFour'];
+  const [signal, setSignal] = useState(signalOrder[0]);
+  const [visible, setVisible] = useState(true);
+  const [seconds, setSeconds] = useState('2');
+  const [sec, setSec] = useState('2');
 
   useEffect(() => {
-    setInterval(() => {
-      setSignalOne(true);
-      setSignalTwo(false);
-      setSignalThree(false);
-      setSignalFour(false);
-    }, 4000);
-
-    setInterval(() => {
-      setSignalOne(false);
-      setSignalTwo(true);
-      setSignalThree(false);
-      setSignalFour(false);
-    }, 4000);
-    setInterval(() => {
-      setSignalOne(false);
-      setSignalTwo(false);
-      setSignalThree(true);
-      setSignalFour(false);
-    }, 4000);
-    setInterval(() => {
-      setSignalOne(false);
-      setSignalTwo(false);
-      setSignalThree(false);
-      setSignalFour(true);
-    }, 4000);
+    if (sec > 0) {
+      setTimeout(() => {
+        var index = signalOrder.indexOf(signal);
+        setSignal(() => {
+          if (index == signalOrder.length - 1) {
+            return (index = 0), signalOrder[index];
+          } else {
+            return index, signalOrder[index + 1];
+          }
+        });
+        console.log(signal, sec);
+      }, sec * 1000);
+    } else {
+      null;
+    }
   });
 
+  // useEffect(() => {
+  //   if (sec > 0) {
+  //     setTimeout(() => {
+  //       var index = signalOrder.indexOf(signal);
+  //       setSignal(() => {
+  //         if (index == 0) {
+  //           return (index = 3), signalOrder[index];
+  //         } else {
+  //           return index, signalOrder[index - 1];
+  //         }
+  //       });
+  //       console.log(signal, sec);
+  //     }, sec * 1000);
+  //   } else {
+  //     null;
+  //   }
+  // });
+
+  const changeTime = () => {
+    setVisible(true), setSec(seconds);
+  };
   return (
     <SafeAreaView style={styles.junction}>
       <View style={styles.top}>
         <View
           style={[
             styles.signalOne,
-            {backgroundColor: signalOne ? 'green' : 'red'},
+            {backgroundColor: signal == 'signalOne' ? 'green' : 'red'},
           ]}
         />
       </View>
@@ -50,13 +63,13 @@ const Signal = () => {
         <View
           style={[
             styles.signalTwo,
-            {backgroundColor: signalTwo ? 'green' : 'red'},
+            {backgroundColor: signal == 'signalFour' ? 'green' : 'red'},
           ]}
         />
         <View
           style={[
             styles.signalThree,
-            {backgroundColor: signalThree ? 'green' : 'red'},
+            {backgroundColor: signal == 'signalTwo' ? 'green' : 'red'},
           ]}
         />
       </View>
@@ -65,9 +78,34 @@ const Signal = () => {
         <View
           style={[
             styles.signalFour,
-            {backgroundColor: signalFour ? 'green' : 'red'},
+            {backgroundColor: signal == 'signalThree' ? 'green' : 'red'},
           ]}
         />
+      </View>
+
+      <View style={styles.timer}>
+        {visible ? (
+          <TouchableOpacity
+            style={styles.timerButton}
+            onPress={() => {
+              setVisible(false), setSec('0');
+            }}>
+            <Icon name={'stopwatch'} size={70} color={'blue'} />
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.textInput}
+              value={seconds}
+              // placeholder={seconds}
+              onChangeText={second => setSeconds(second)}
+              keyboardType="number-pad"
+            />
+            <TouchableOpacity onPress={changeTime}>
+              <Icon name={'checkmark-done'} size={40} color={'blue'} />
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
