@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -17,22 +17,20 @@ const MainScreen = () => {
   });
 
   const [second, setSecond] = useState('2');
-  const [sec, setSec] = useState('2');
 
   const [visible, setvisible] = useState(true);
-  const [go, setGo] = useState(false);
+
+  const stop = useRef(true);
 
   useEffect(() => {
-    const main = setTimeout(() => {
-      setGo(true);
-    });
-    if (go == true) {
-      changeSignal1(), console.log(sec);
-    } else {
-      null;
-      setGo(false);
+    while (stop.current) {
+      break;
     }
-  }, [go]);
+
+    if (second > 0) {
+      changeSignal1(), console.log(second);
+    }
+  }, [visible]);
 
   const changeSignal1 = () => {
     setColor({
@@ -43,7 +41,7 @@ const MainScreen = () => {
     });
     setTimeout(() => {
       changeSignal2();
-    }, sec * 1000);
+    }, second * 1000);
   };
 
   const changeSignal2 = () => {
@@ -55,7 +53,7 @@ const MainScreen = () => {
     });
     setTimeout(() => {
       changeSignal3();
-    }, sec * 1000);
+    }, second * 1000);
   };
 
   const changeSignal3 = () => {
@@ -67,8 +65,9 @@ const MainScreen = () => {
     });
     setTimeout(() => {
       changeSignal4();
-    }, sec * 1000);
+    }, second * 1000);
   };
+
   const changeSignal4 = () => {
     setColor({
       signal1: '',
@@ -78,30 +77,30 @@ const MainScreen = () => {
     });
     setTimeout(() => {
       changeSignal1();
-    }, sec * 1000);
+    }, second * 1000);
   };
+
   const onClick = () => {
-    setTimeout(() => {
-      setvisible(true);
-      console.log(sec);
-    }, 1000);
+    stop.current = false;
+    setvisible(true);
   };
 
   const pauseSec = () => {
-    setSec('0');
+    stop.current = true;
+    setSecond('0');
     setvisible(false);
   };
   if (color.signal1 == 'green') {
-    console.log('Signal1', sec);
+    console.log('signal1', second);
   }
   if (color.signal2 == 'green') {
-    console.log('Signal2', sec);
+    console.log('signal2', second);
   }
   if (color.signal3 == 'green') {
-    console.log('Signal3', sec);
+    console.log('signal3', second);
   }
   if (color.signal4 == 'green') {
-    console.log('Signal4', sec);
+    console.log('signal4', second);
   }
 
   return (
@@ -158,7 +157,7 @@ const MainScreen = () => {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                setSec(second), onClick();
+                onClick();
               }}>
               <Text style={styles.text_inside_btn}>Set Seconds</Text>
             </TouchableOpacity>

@@ -106,6 +106,7 @@ const Signal = () => {
             </TouchableOpacity>
           </View>
         )}
+        It's simply because you haven't return the FlatList.
       </View>
     </SafeAreaView>
   );
